@@ -1,10 +1,35 @@
-module.exports = [
-    {
-        category: 1,
-        description: 'Lorem Ipsum'
-    },
-    {
-        category: 2,
-        description: 'Food'
+const oracledb = require('oracledb');
+const { oracle } = require('../config/config');
+const path = require('path');
+
+const oracleClient = path.join('C:', 'oracle', 'db_home', 'bin');
+
+module.exports.start = async () => {
+  await oracledb.createPool(oracle);
+};
+
+module.exports.close = async () => {
+  await oracledb.getPool().close(0);
+};
+
+module.exports.pool = async (statement, binds = [], opts = {}) => {
+  let conn;
+  let result = [];
+  opts.outFormat = oracledb.OUT_FORMAT_OBJECT;
+  try {
+    conn = await oracledb.getConnection();
+    result = await conn.execute(statement, binds, opts);
+    return result;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  } finally {
+    if (conn) {
+      try {
+        await conn.close();
+      } catch (error) {
+        console.log(error);
+      }
     }
-]
+  }
+};
