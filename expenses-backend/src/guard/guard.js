@@ -11,12 +11,12 @@ module.exports = async (req, res, next) => {
       if (decoded_token) {
         const args = { person: decoded_token['PERSON'] };
         const {
-          rows: [PERSON], // { PERSON: 8, FIRST_NAME: 'Lorem', EMAIL: 'lorem@gmail.com' }
+          rows: [PERSON], // { PERSON: 8, NAME: 'Lorem', EMAIL: 'lorem@gmail.com' }
         } = await Guard.person(args);
         if (PERSON) {
           req.person = {
             person: PERSON['PERSON'],
-            first_name: PERSON['FIRST_NAME'],
+            name: PERSON['NAME'],
             email: PERSON['EMAIL'],
           },
           req.bank = {

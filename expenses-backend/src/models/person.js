@@ -1,9 +1,9 @@
 const { pool } = require('../utils/db');
 
-module.exports.register = ({ first_name, email, password }) => {
-  const bindings = { first_name, email, password };
-  const SQL_INSERT_PERSON = `INSERT INTO PERSON(PERSON, FIRST_NAME, EMAIL, PASSWORD)
-                            VALUES(SQ_PERSON.NEXTVAL, :first_name, :email, :password)`;
+module.exports.register = ({ name, email, password }) => {
+  const bindings = { name, email, password };
+  const SQL_INSERT_PERSON = `INSERT INTO PERSON(PERSON, NAME, EMAIL, PASSWORD)
+                            VALUES(SQ_PERSON.NEXTVAL, :name, :email, :password)`;
   return pool(SQL_INSERT_PERSON, bindings, { autoCommit: true });
 };
 
@@ -11,7 +11,7 @@ module.exports.login = ({ email }) => {
   const bindings = { email };
   const SQL_SELECT_PERSON = `SELECT 
                                 PERSON, 
-                                FIRST_NAME, 
+                                NAME, 
                                 EMAIL, 
                                 PASSWORD
                             FROM PERSON

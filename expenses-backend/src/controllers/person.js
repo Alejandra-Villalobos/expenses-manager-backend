@@ -4,10 +4,10 @@ const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 module.exports.registerPerson = async (req, res, next) => {
-  const { first_name, email, password } = req.body;
+  const { name, email, password } = req.body;
   try {
     const hash_password = await bcryptjs.hash(password, 12);
-    const args = { first_name, email, password: hash_password };
+    const args = { name, email, password: hash_password };
     await Person.register(args);
     res.status(200).json({ message: 'Person created!' });
   } catch (error) {
@@ -31,7 +31,7 @@ module.exports.loginPerson = async (req, res, next) => {
         const data = [
           {
             person: person['PERSON'],
-            first_name: person['FIRST_NAME'],
+            name: person['NAME'],
             email: person['EMAIL'],
           },
         ];
