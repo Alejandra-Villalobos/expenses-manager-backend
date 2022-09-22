@@ -38,6 +38,7 @@ module.exports.loginPerson = async (req, res, next) => {
         return res.status(200).json({ token, data });
       }
     }
+    console.log(rows)
     res.status(400).json({ message: 'Error: email or password not valid' });
   } catch (error) {
     res.status(400).json({ message: error });
