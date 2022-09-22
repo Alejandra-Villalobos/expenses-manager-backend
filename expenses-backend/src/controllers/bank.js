@@ -2,6 +2,7 @@ const Bank = require('../models/bank');
 
 module.exports.createBank = async (req, res, next) => {
     const args = {
+      account: req.body.account,
       name: req.body.name,
       currency: req.body.currency,
       amount: req.body.amount,

@@ -6,7 +6,7 @@ module.exports.createOutcome = async (req, res, next) => {
       category: req.body.category,
       description: req.body.description,
       amount: req.body.amount,
-      to_number: req.body.to_number,
+      to_account: req.body.to_account,
       to_bank: req.body.to_bank,
       bank: req.body.bank,
       person: req.person.person,
