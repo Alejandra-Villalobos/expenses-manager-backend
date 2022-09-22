@@ -6,7 +6,8 @@ module.exports.createIncome = async (req, res, next) => {
       category: req.body.category,
       description: req.body.description,
       amount: req.body.amount,
-      bank: req.bank.id,
+      bank: req.body.bank,
+      person: req.person.person,
     };
     try {
       await Income.create(args);
@@ -18,7 +19,7 @@ module.exports.createIncome = async (req, res, next) => {
   
   module.exports.getIncomes = async (req, res, next) => {
     const args = {
-      bank: req.bank.id,
+      person: req.person.person,
     };
     try {
       const { rows } = await Income.fetchAll(args);
@@ -29,7 +30,7 @@ module.exports.createIncome = async (req, res, next) => {
   };
   
   module.exports.getIncome = async (req, res, next) => {
-    const args = { bank: req.bank.id, id: Number(req.params.id) };
+    const args = { person: req.person.person, id: Number(req.params.id) };
     try {
       const { rows } = await Income.findById(args);
       res.status(200).json({ data: rows });

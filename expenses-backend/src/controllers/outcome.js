@@ -8,7 +8,8 @@ module.exports.createOutcome = async (req, res, next) => {
       amount: req.body.amount,
       to_number: req.body.to_number,
       to_bank: req.body.to_bank,
-      bank: req.bank.bank,
+      bank: req.body.bank,
+      person: req.person.person,
     };
     try {
       await Outcome.create(args);
@@ -20,7 +21,7 @@ module.exports.createOutcome = async (req, res, next) => {
   
   module.exports.getOutcomes = async (req, res, next) => {
     const args = {
-      bank: req.bank.bank,
+      person: req.person.person,
     };
     try {
       const { rows } = await Outcome.fetchAll(args);
@@ -31,7 +32,7 @@ module.exports.createOutcome = async (req, res, next) => {
   };
   
   module.exports.getOutcome = async (req, res, next) => {
-    const args = { bank: req.bank.bank, id: Number(req.params.id) };
+    const args = { person: req.person.person, id: Number(req.params.id) };
     try {
       const { rows } = await Outcome.findById(args);
       res.status(200).json({ data: rows });
