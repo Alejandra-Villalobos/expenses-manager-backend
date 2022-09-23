@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const oracle = require('./src/utils/db');
 const { server } = require('./src/config/config');
+const cors = require('cors');
 
 const routes_person = require('./src/routes/person');
 const routes_bank = require('./src/routes/bank');
@@ -9,6 +10,7 @@ const routesincome = require('./src/routes/income');
 const routes_outcome = require('./src/routes/outcome');
 const routes_invalid_ = require('./src/routes/notFound');
 
+app.use(cors({ origin: true }));
 app.use(express.json());
 
 app.use(routes_person);
