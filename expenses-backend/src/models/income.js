@@ -9,7 +9,13 @@ module.exports.create = ({ title, category, description, amount, bank, person })
   
   module.exports.fetchAll = ({ person }) => {
     const bindings = { person };
-    const SQL_SELECT_INCOMES = `SELECT TITLE, CATEGORY, DESCRIPTION, AMOUNT, BANK, ADD_DATE
+    const SQL_SELECT_INCOMES = `SELECT 
+                                    TITLE as "title",
+                                    CATEGORY as "category",
+                                    DESCRIPTION as "description",
+                                    AMOUNT as "amount",
+                                    ADD_DATE as "add_date",
+                                    BANK as "bank"
                                   FROM INCOME
                                   WHERE PERSON = :person`;
     return pool(SQL_SELECT_INCOMES, bindings);
@@ -17,7 +23,13 @@ module.exports.create = ({ title, category, description, amount, bank, person })
   
   module.exports.findById = ({ person, id }) => {
     const bindings = { person, id };
-    const SQL_SELECT_INCOME = `SELECT TITLE, CATEGORY, DESCRIPTION, AMOUNT, BANK, ADD_DATE
+    const SQL_SELECT_INCOME = `SELECT
+                                    TITLE as "title",
+                                    CATEGORY as "category",
+                                    DESCRIPTION as "description",
+                                    AMOUNT as "amount",
+                                    ADD_DATE as "add_date",
+                                    BANK as "bank"
                                   FROM INCOME
                                   WHERE PERSON = :person
                                   AND ID = :id`;

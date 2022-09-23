@@ -9,7 +9,11 @@ module.exports.create = ({ account, name, currency, amount, person }) => {
   
   module.exports.fetchAll = ({ person }) => {
     const bindings = { person };
-    const SQL_SELECT_BANKS = `SELECT ACCOUNT, NAME, CURRENCY, AMOUNT
+    const SQL_SELECT_BANKS = `SELECT
+                                    ACCOUNT as "account",
+                                    NAME as "name",
+                                    CURRENCY as "currency",
+                                    AMOUNT as "amount"
                                   FROM BANK
                                   WHERE PERSON = :person`;
     return pool(SQL_SELECT_BANKS, bindings);
@@ -17,7 +21,11 @@ module.exports.create = ({ account, name, currency, amount, person }) => {
   
   module.exports.findById = ({ person, id }) => {
     const bindings = { person, id };
-    const SQL_SELECT_BANK = `SELECT ACCOUNT, NAME, CURRENCY, AMOUNT
+    const SQL_SELECT_BANK = `SELECT
+                                    ACCOUNT as "account",
+                                    NAME as "name",
+                                    CURRENCY as "currency",
+                                    AMOUNT as "amount"
                                   FROM BANK
                                   WHERE PERSON = :person
                                   AND ID = :id`;

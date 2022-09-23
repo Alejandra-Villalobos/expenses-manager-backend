@@ -1,8 +1,5 @@
 const oracledb = require('oracledb');
 const { oracle } = require('../config/config');
-const path = require('path');
-
-const oracleClient = path.join('C:', 'oracle', 'db_home', 'bin');
 
 module.exports.start = async () => {
   await oracledb.createPool(oracle);

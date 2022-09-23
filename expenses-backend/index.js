@@ -2,22 +2,20 @@ const express = require('express');
 const app = express();
 const oracle = require('./src/utils/db');
 const { server } = require('./src/config/config');
-const guard = require('./src/guard/guard');
 
-const personRoutes = require('./src/routes/person');
-const bankRoutes = require('./src/routes/bank');
-const incomeRoutes = require('./src/routes/income');
-const outcomeRoutes = require('./src/routes/outcome');
-const invalidRoutes = require('./src/routes/notFound');
+const routes_person = require('./src/routes/person');
+const routes_bank = require('./src/routes/bank');
+const routesincome = require('./src/routes/income');
+const routes_outcome = require('./src/routes/outcome');
+const routes_invalid_ = require('./src/routes/notFound');
 
 app.use(express.json());
 
-app.use(personRoutes);
-app.use(guard);
-app.use(bankRoutes);
-app.use(incomeRoutes);
-app.use(outcomeRoutes);
-app.use(invalidRoutes);
+app.use(routes_person);
+app.use(routes_bank);
+app.use(routesincome);
+app.use(routes_outcome);
+app.use(routes_invalid_);
 
 oracle
   .start()
