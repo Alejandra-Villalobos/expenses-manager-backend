@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const guard = require('./src/guard/guard');
+const guard = require('../guard/guard');
 
 const { registerPerson, loginPerson, infoPerson } = require('../controllers/person');
 

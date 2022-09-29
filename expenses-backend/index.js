@@ -6,7 +6,7 @@ const cors = require('cors');
 
 const routes_person = require('./src/routes/person');
 const routes_bank = require('./src/routes/bank');
-const routesincome = require('./src/routes/income');
+const routes_income = require('./src/routes/income');
 const routes_outcome = require('./src/routes/outcome');
 const routes_invalid_ = require('./src/routes/notFound');
 
@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(routes_person);
 app.use(routes_bank);
-app.use(routesincome);
+app.use(routes_income);
 app.use(routes_outcome);
 app.use(routes_invalid_);
 
