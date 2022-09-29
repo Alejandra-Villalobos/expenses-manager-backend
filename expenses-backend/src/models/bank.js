@@ -1,9 +1,9 @@
 const { pool } = require('../utils/db');
 
-module.exports.create = ({ account, name, currency, amount, person }) => {
-    const bindings = { account, name, currency, amount, person };
-    const SQL_INSERT_BANK = `INSERT INTO BANK(ID, ACCOUNT, NAME, CURRENCY, AMOUNT, PERSON)
-                                VALUES(SQ_BANK.NEXTVAL, :account, :name, :currency, :amount, :person)`;
+module.exports.create = ({ account, name, currency, amount, user_name, person }) => {
+    const bindings = { account, name, currency, amount, user_name, person };
+    const SQL_INSERT_BANK = `INSERT INTO BANK(ID, ACCOUNT, NAME, CURRENCY, AMOUNT, USER_NAME, PERSON)
+                                VALUES(SQ_BANK.NEXTVAL, :account, :name, :currency, :amount, :user_name, :person)`;
     return pool(SQL_INSERT_BANK, bindings, { autoCommit: true });
   };
   
@@ -13,7 +13,8 @@ module.exports.create = ({ account, name, currency, amount, person }) => {
                                     ACCOUNT as "account",
                                     NAME as "name",
                                     CURRENCY as "currency",
-                                    AMOUNT as "amount"
+                                    AMOUNT as "amount",
+                                    USER_NAME as "user_name"
                                   FROM BANK
                                   WHERE PERSON = :person`;
     return pool(SQL_SELECT_BANKS, bindings);
@@ -25,7 +26,8 @@ module.exports.create = ({ account, name, currency, amount, person }) => {
                                     ACCOUNT as "account",
                                     NAME as "name",
                                     CURRENCY as "currency",
-                                    AMOUNT as "amount"
+                                    AMOUNT as "amount",
+                                    USER_NAME as "user_name"
                                   FROM BANK
                                   WHERE PERSON = :person
                                   AND ID = :id`;

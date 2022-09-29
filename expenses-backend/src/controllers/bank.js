@@ -6,6 +6,7 @@ module.exports.createBank = async (req, res, next) => {
       name: req.body.name,
       currency: req.body.currency,
       amount: req.body.amount,
+      user_name: req.body.user_name,
       person: req.person.person,
     };
     try {
