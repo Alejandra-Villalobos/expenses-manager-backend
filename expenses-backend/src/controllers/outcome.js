@@ -2,7 +2,6 @@ const Outcome = require('../models/outcome');
 
 module.exports.createOutcome = async (req, res, next) => {
     const args = {
-      title: req.body.title,
       category: req.body.category,
       description: req.body.description,
       amount: req.body.amount,
