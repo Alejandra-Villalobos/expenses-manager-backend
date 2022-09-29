@@ -38,3 +38,13 @@ module.exports.createBank = async (req, res, next) => {
       res.status(400).json({ message: error });
     }
   };
+
+  module.exports.updateBank = async (req, res, next) => {
+    const args = { amount: req.body.amount, id: req.body.id };
+    try {
+      await Bank.updateAmount(args);
+      res.status(200).json({ message: 'Amount updated!' });
+    } catch (error) {
+      res.status(400).json({ message: error });
+    }
+  };

@@ -35,3 +35,11 @@ module.exports.create = ({ account, name, currency, amount, user_name, person })
                                   AND ID = :id`;
     return pool(SQL_SELECT_BANK, bindings);
   };
+  
+  module.exports.updateAmount = ({ amount, id }) => {
+    const bindings = { amount, id };
+    const SQL_UPDATE_BANK = `UPDATE BANK 
+                                SET AMOUNT = AMOUNT + :amount
+                              WHERE ID = :id`;
+    return pool(SQL_UPDATE_BANK, bindings, { autoCommit: true });
+  };
