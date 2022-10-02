@@ -14,7 +14,7 @@ router.get('/bank/:id', guard, getBank);
 router.get('/bank', guard, getBanks);
 
 //PUT AMOUNT
-router.put('/bank', guard, updateBank);
+router.put('/bank/:id', guard, updateBank);
 
 module.exports = router;
 
