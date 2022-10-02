@@ -35,6 +35,18 @@ module.exports.create = ({ account, name, currency, amount, user_name, person })
                                   AND ID = :id`;
     return pool(SQL_SELECT_BANK, bindings);
   };
+
+  module.exports.fetchAllInDB = () => {
+    const SQL_SELECT_BANKS = `SELECT
+                                    ID as "id",
+                                    ACCOUNT as "account",
+                                    NAME as "name",
+                                    CURRENCY as "currency",
+                                    AMOUNT as "amount",
+                                    USER_NAME as "user_name"
+                                  FROM BANK`;
+    return pool(SQL_SELECT_BANKS);
+  };
   
   module.exports.updateAmount = ({ amount, id }) => {
     const bindings = { amount, id };

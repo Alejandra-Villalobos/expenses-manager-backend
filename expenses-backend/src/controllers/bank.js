@@ -39,6 +39,15 @@ module.exports.createBank = async (req, res, next) => {
     }
   };
 
+  module.exports.getAllBanks = async (req, res, next) => {
+    try {
+      const { rows } = await Bank.fetchAllInDB();
+      res.status(200).json({ data: rows });
+    } catch (error) {
+      res.status(400).json({ message: error });
+    }
+  };
+
   module.exports.updateBank = async (req, res, next) => {
     const args = { amount: req.body.amount, id: Number(req.params.id) };
     try {
