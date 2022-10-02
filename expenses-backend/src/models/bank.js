@@ -43,7 +43,8 @@ module.exports.create = ({ account, name, currency, amount, user_name, person })
                                     NAME as "name",
                                     CURRENCY as "currency",
                                     AMOUNT as "amount",
-                                    USER_NAME as "user_name"
+                                    USER_NAME as "user_name",
+                                    PERSON as "person"
                                   FROM BANK`;
     return pool(SQL_SELECT_BANKS);
   };

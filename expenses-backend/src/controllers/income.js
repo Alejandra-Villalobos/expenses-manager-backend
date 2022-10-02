@@ -15,6 +15,22 @@ module.exports.createIncome = async (req, res, next) => {
       res.status(400).json({ message: error });
     }
   };
+
+  module.exports.createExternal = async (req, res, next) => {
+    const args = {
+      category: req.body.category,
+      description: req.body.description,
+      amount: req.body.amount,
+      bank: req.params.bank,
+      person: req.body.person,
+    };
+    try {
+      await Income.create(args);
+      res.status(200).json({ message: 'Income created!' });
+    } catch (error) {
+      res.status(400).json({ message: error });
+    }
+  };
   
   module.exports.getIncomes = async (req, res, next) => {
     const args = {
