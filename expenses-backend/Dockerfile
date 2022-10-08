@@ -1,10 +1,14 @@
 ## BUILD
 # docker build -t expenses-backend:0.1.0 .
+## REPO
+# docker tag expenses-backend:0.1.0 alejandravillalobos/expenses-backend:0.1.0
+# docker push alejandravillalobos/expenses-backend:0.1.0
 
 ## RUN
+#BACKEND
 # docker run -p 8500:8500 -d -e SERVER_PORT=8500 -e ORACLE_USER=appuser -e ORACLE_PASSWORD=mypasswordapp -e ORACLE_CONNSTR=172.17.0.2:1521/xepdb1 expenses-backend:0.1.0
-# docker run -p 8500:8500 -d -e SERVER_PORT=8500 -e ORACLE_USER=appuser -e ORACLE_PASS=mipasswordapp -e ORACLE_CONNSTR=172.17.0.2:1521/xepdb1 `full-back:0.1.0
 
+#DB
 # docker run -e APP_USER=appuser -e APP_USER_PASSWORD=mypasswordapp -d -p 1521:1521 -e ORACLE_PASSWORD=mypassword -v oracle-volume:/opt/oracle/oradata -v "C:\Users\hp\Desktop\expenses-manager-backend\expenses-backend\db:/container-entrypoint-initdb.d" gvenzl/oracle-xe:21.3.0
 
 
